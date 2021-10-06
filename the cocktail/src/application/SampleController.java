@@ -27,17 +27,16 @@ public class SampleController {
 		System.out.println(url);
 		JSONObject json = JsonReader.readJsonFromUrl(url);
 		JSONArray array = (JSONArray)json.get("drinks");
-		System.out.println(json.toString());
+
 		ArrayList<Cocktail> cocktails = new ArrayList<Cocktail>();
 		for (int i=0; i< array.length(); i++) {
 			JSONObject json1 = (JSONObject)array.get(i);
 			Cocktail cocktail = SetInformation(json1);
 			cocktails.add(cocktail);
-			System.out.println(json1.toString());
+			cocktail.PrintCocktail();
 			}
-		
-
 		}
+	
 		public Cocktail SetInformation(JSONObject json) {
 			Cocktail cocktail = new Cocktail();
 			
@@ -49,40 +48,27 @@ public class SampleController {
 			cocktail.setStrInstructions(json.getString("strInstructions"));
 			cocktail.setStrDrinkThumb(json.getString("strDrinkThumb"));
 			
-			ArrayList<String> ingridients = new ArrayList<>();
-			
-			String ingredient = "strIngredient";
-			
-			int i = 1;
-			
-			String concatenation = ingredient + i;
-			
-			while(!(json.isNull(concatenation))) {
-				ingridients.add(json.getString(concatenation));
-				i ++;
-				concatenation = ingredient + i;
-				System.out.println(ingridients);
-			}
+			ArrayList<String> ingridients = Insert("strIngredient", 1, json);
 			cocktail.setIngredients(ingridients);
 			
-			ArrayList<String> measures = new ArrayList<>();
-			
-			String measure = "strMeasure";
-			
-			i = 1;
-			
-			concatenation = measure + i;
-			
-			while(!(json.isNull(concatenation))) {
-				measures.add(json.getString(concatenation));
-				i ++;
-				concatenation = measure + i;
-				System.out.println(measures);
-			}
+			ArrayList<String> measures = Insert("strMeasure", 1, json);
 			cocktail.setMeasure(measures);
 			
 			return cocktail;
-	}
+			
+		}
+		
+		public ArrayList<String> Insert(String str, int i, JSONObject json) {
+			ArrayList<String> strs = new ArrayList<String>();
+			String concatenation = str + i;
+			
+			while(!(json.isNull(concatenation))) {
+				strs.add(json.getString(concatenation));
+				i ++;
+				concatenation = str + i;
+			}
+			return strs;
+		}
 	
 	
 	
