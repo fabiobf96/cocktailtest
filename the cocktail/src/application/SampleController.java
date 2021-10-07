@@ -16,10 +16,12 @@ public class SampleController {
 	
 	private String version = "1";
 	
-	@FXML
-	TextField txtCkt;
-	@FXML
-	Button btnSrc;
+	@FXML private TextField txtCkt;
+	@FXML private Button btnSrc;
+
+	
+	private ArrayList<Cocktail> cocktails;
+	private Cocktail cocktail;
 	
 	public void SearchCocktailByName(Event e) throws JSONException, IOException {
 		
@@ -27,18 +29,19 @@ public class SampleController {
 		System.out.println(url);
 		JSONObject json = JsonReader.readJsonFromUrl(url);
 		JSONArray array = (JSONArray)json.get("drinks");
-
-		ArrayList<Cocktail> cocktails = new ArrayList<Cocktail>();
+		 
+		cocktails = new ArrayList<Cocktail>();
+		
 		for (int i=0; i< array.length(); i++) {
 			JSONObject json1 = (JSONObject)array.get(i);
-			Cocktail cocktail = SetInformation(json1);
+			cocktail = SetInformation(json1);
 			cocktails.add(cocktail);
 			cocktail.PrintCocktail();
 			}
 		}
 	
 		public Cocktail SetInformation(JSONObject json) {
-			Cocktail cocktail = new Cocktail();
+			cocktail = new Cocktail();
 			
 			cocktail.setIdDrink(json.getInt("idDrink"));
 			cocktail.setStrDrink(json.getString("strDrink"));
