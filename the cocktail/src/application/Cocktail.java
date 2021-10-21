@@ -1,6 +1,6 @@
 package application;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Cocktail {
 	
@@ -12,8 +12,8 @@ public class Cocktail {
     private String strInstructions;
     private String strDrinkThumb;
  
-    private ArrayList<String> ingredients;
-    private ArrayList<String> measures;
+    private List<String> ingredients;
+    private List<String> measures;
     
 	public int getIdDrink() {
 		return idDrink;
@@ -57,20 +57,20 @@ public class Cocktail {
 	public void setStrDrinkThumb(String strDrinkThumb) {
 		this.strDrinkThumb = strDrinkThumb;
 	}
-	public ArrayList<String> getIngredients() {
+	public List<String> getIngredients() {
 		return ingredients;
 	}
-	public void setIngredients(ArrayList<String> ingredients) {
+	public void setIngredients(List<String> ingredients) {
 		this.ingredients = ingredients;
 	}
-	public ArrayList<String> getMeasures() {
+	public List<String> getMeasures() {
 		return measures;
 	}
-	public void setMeasure(ArrayList<String> measures) {
+	public void setMeasure(List<String> measures) {
 		this.measures = measures;
 	}
 	
-	public void PrintCocktail()
+	public void printCocktail()
 	{
 		System.out.println(idDrink + "\n" + strDrink + "\n" + strCategory + "\n" + strAlcoholic + "\n" + strGlass
 				+ "\n" + strInstructions + "\n" + strDrinkThumb + "\n" + ingredients + "\n" + measures);

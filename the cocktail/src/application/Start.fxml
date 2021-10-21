@@ -7,6 +7,6 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
    <children>
       <TextField fx:id="txtCkt" layoutX="213.0" layoutY="175.0" prefHeight="25.0" prefWidth="174.0" promptText="cocktail name" />
-      <Button fx:id="btnSrc" layoutX="394.0" layoutY="175.0" mnemonicParsing="false" onAction="#SearchCocktailByName" text="Button" />
+      <Button fx:id="btnSrc" layoutX="394.0" layoutY="175.0" mnemonicParsing="false" onAction="#searchCocktailByName" text="Button" />
    </children>
 </Pane>
